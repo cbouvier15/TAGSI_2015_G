@@ -9,25 +9,38 @@
  * Main module of the application.
  */
 angular
-  .module('tagsiyachtFrontendApp', [
+  .module('app', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ui.router',
+    'ui.materialize'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/yachts');
+
+    $stateProvider
+      .state('main', {
+        abstract: true,
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .state('main.yachts', {
+        url: '/yachts',
+        templateUrl: 'views/yachts.html',
+        controller: 'YachtCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('main.detail', {
+        url: '/:id',
+        templateUrl: 'views/yacht-detail.html',
+        controller: 'YachtCtrl'
+      })
+      .state('mail.profile', {
+        url: '/profile',
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
       });
+
   });

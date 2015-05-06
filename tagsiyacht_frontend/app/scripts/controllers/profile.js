@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name tagsiyachtFrontendApp.controller:AboutCtrl
+ * @name app.controller:ProfileCtrl
  * @description
- * # AboutCtrl
- * Controller of the tagsiyachtFrontendApp
+ * # ProfileCtrl
+ * Controller of the app
  */
 angular.module('app')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('ProfileCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
