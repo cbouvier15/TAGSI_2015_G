@@ -1,27 +1,77 @@
-<p>This is the yachts view.</p>
-<table class="hoverable">
- <thead>
-   <tr>
-       <th data-field="id">Name</th>
-       <th data-field="name">Item Name</th>
-       <th data-field="price">Item Price</th>
-   </tr>
- </thead>
- <tbody>
-   <tr>
-     <td>Alvin</td>
-     <td>Eclair</td>
-     <td>$0.87</td>
-   </tr>
-   <tr>
-     <td>Alan</td>
-     <td>Jellybean</td>
-     <td>$3.76</td>
-   </tr>
-   <tr>
-     <td>Jonathan</td>
-     <td>Lollipop</td>
-     <td>$7.00</td>
-   </tr>
- </tbody>
-</table>
+
+<div ng-show="null">
+  <table class="hoverable">
+   <thead>
+     <tr>
+         <th data-field="id">Picture</th>
+         <th data-field="name">Model</th>
+         <th data-field="price">Description</th>
+         <th data-field="price">Price</th>
+         <th data-field="price">Sold</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr ng-repeat='yacht in yatchs'>
+       <td></td>
+       <td>{{yacht.model}}</td>
+       <td>{{yacht.description}}</td>
+       <td>{{yacht.price | currency}}</td>
+       <td>{{yacht.sold}}</td>
+     </tr>
+   </tbody>
+  </table>
+</div>
+
+<div>
+  <div class="row">
+    <div class="col s12 m4">
+
+      <div ng-repeat='yacht in yachts1' class="card">
+        <div class="card-image">
+          <img src="images/{{$index+1}}.jpg">
+          <span class="card-title">{{yacht.model}} {{yacht.price | currency}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{yacht.description}}</p>
+        </div>
+        <div class="card-action">
+          <a href="/detail/{{$index}}"><i class="mdi-content-add"></i>Info</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col s12 m4">
+
+      <div ng-repeat='yacht in yachts2' class="card">
+        <div class="card-image">
+          <img src="images/{{$index+1+4}}.jpg">
+          <span class="card-title">{{yacht.model}} {{yacht.price | currency}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{yacht.description}}</p>
+        </div>
+        <div class="card-action">
+          <a href="/detail/{{$index+1+4}}"><i class="mdi-content-add"></i>Info</a>
+        </div>
+      </div>
+    </div>
+
+        <div class="col s12 m4">
+
+      <div ng-repeat='yacht in yachts3' class="card">
+        <div class="card-image">
+          <img src="images/{{$index+1+8}}.jpg">
+          <span class="card-title">{{yacht.model}} {{yacht.price | currency}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{yacht.description}}</p>
+        </div>
+        <div class="card-action">
+          <a href="/detail/{{$index+1+8}}"><i class="mdi-content-add"></i>Info</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
