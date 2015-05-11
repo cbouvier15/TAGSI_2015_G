@@ -33,7 +33,7 @@ angular
         controller: 'YachtCtrl'
       })
       .state('main.detail', {
-        url: 'detail/:id',
+        url: '/detail/:id',
         templateUrl: 'views/yacht-detail.html',
         controller: 'YachtCtrl'
       })
