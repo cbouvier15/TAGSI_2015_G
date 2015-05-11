@@ -33,14 +33,19 @@ angular
       .state('main.yachts', {
         url: '/yachts',
         templateUrl: 'views/yachts.html',
+        resolve: {
+          yachts: function (Yacht) {
+            return Yacht.query().$promise;
+          }
+        },
         controller: 'YachtCtrl'
       })
       .state('main.detail', {
-        url: '/:id',
+        url: '/detail/:id',
         templateUrl: 'views/yacht-detail.html',
         controller: 'YachtCtrl'
       })
-      .state('mail.profile', {
+      .state('main.profile', {
         url: '/profile',
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'

@@ -1,1 +1,18 @@
-<p>This is the yacht-detail view.</p>
+<div class="row container">
+    <div class="card">
+      <div class="card-image">
+        <img src="images/{{yachts[$stateParams.id].id}}.jpg">
+        <span class="card-title">{{yachts[$stateParams.id].model}} {{yachts[$stateParams.id].price | currency}}</span>
+      </div>
+      <div class="card-content">
+        <p><strong>Model: </strong>{{yachts[$stateParams.id].model}}</p>
+        <p><strong>Description: </strong>{{yachts[$stateParams.id].description}}</p>
+        <p><strong>Price: </strong>{{yachts[$stateParams.id].price | currency}}</p>
+      </div>
+      <div class="card-action">
+        <a><i class="mdi-communication-call medium"></i>Contacto</a>
+        <a><i class="mdi-communication-vpn-key medium"></i>Alquilar</a>
+        <a><i class="mdi-editor-attach-money medium"></i>Comprar</a>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+nav {
+	background-color: #303F9F;
+}
+
+.subtitle {
+	background-color: #3F51B5;
+  	font-size: 1.0rem;
+}
+
+footer.page-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: #3F51B5;
+}
+
+nav ul a {
+  color: #FFC107;
+}

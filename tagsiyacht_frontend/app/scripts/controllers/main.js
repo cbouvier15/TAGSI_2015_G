@@ -14,5 +14,4 @@ angular.module('app')
       'AngularJS',
       'Karma'
     ];
-    $(".button-collapse").sideNav();
   });

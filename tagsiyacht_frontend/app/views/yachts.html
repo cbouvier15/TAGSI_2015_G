@@ -1,27 +1,16 @@
-<p>This is the yachts view.</p>
-<table class="hoverable">
- <thead>
-   <tr>
-       <th data-field="id">Name</th>
-       <th data-field="name">Item Name</th>
-       <th data-field="price">Item Price</th>
-   </tr>
- </thead>
- <tbody>
-   <tr>
-     <td>Alvin</td>
-     <td>Eclair</td>
-     <td>$0.87</td>
-   </tr>
-   <tr>
-     <td>Alan</td>
-     <td>Jellybean</td>
-     <td>$3.76</td>
-   </tr>
-   <tr>
-     <td>Jonathan</td>
-     <td>Lollipop</td>
-     <td>$7.00</td>
-   </tr>
- </tbody>
-</table>
+<div class="row">
+    <div ng-repeat='yacht in yachts' class="col s12 m4 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="images/{{$index}}.jpg">
+          <span class="card-title">{{yacht.model}} {{yacht.price | currency}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{yacht.description}}</p>
+        </div>
+        <div class="card-action">
+          <a href="#/detail/{{$index}}"><i class="mdi-content-add"></i>Info</a>
+        </div>
+      </div>
+    </div>
+</div>
