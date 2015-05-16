@@ -15,6 +15,10 @@ class Yacht(models.Model):
     price = models.IntegerField(default=0)
     description = models.CharField(max_length=400)
     sold = models.BooleanField(default=False)
+    photo = models.ImageField(upload_to='images/yachts',verbose_name=('Yacht Photo'), null=True, blank=True)
+
+    def __str__(self):
+        return self.model
 
 
 class Sale(models.Model):

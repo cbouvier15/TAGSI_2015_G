@@ -2,7 +2,7 @@
     <div ng-repeat='yacht in yachts' class="col s12 m4 l4">
       <div class="card">
         <div class="card-image">
-          <img src="images/{{$index}}.jpg">
+          <img src="{{yacht.photo}}">
           <span class="card-title">{{yacht.model}} {{yacht.price | currency}}</span>
         </div>
         <div class="card-content">

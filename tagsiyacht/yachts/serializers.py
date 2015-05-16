@@ -10,7 +10,7 @@ class YachtSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Yacht
-        fields = ('id', 'model', 'price', 'description', 'sold')
+        fields = ('id', 'model', 'price', 'description', 'sold', 'photo')
 
 
 class ClientSerializer(serializers.ModelSerializer):
