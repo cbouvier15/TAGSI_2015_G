@@ -43,6 +43,11 @@ angular
       .state('main.detail', {
         url: '/detail/:id',
         templateUrl: 'views/yacht-detail.html',
+        resolve: {
+          yachts: function (Yacht) {
+            return Yacht.query().$promise;
+          }
+        },
         controller: 'YachtCtrl'
       })
       .state('main.profile', {
