@@ -1,5 +1,5 @@
-<div class="row">
-    <div ng-repeat='yacht in yachts' class="col s12 m4 l4">
+<div class="row yatchs">
+    <div ng-repeat='yacht in yachts | filter : searchText' class="col s12 m4 l4">
       <div class="card">
         <div class="card-image">
           <img src="{{yacht.photo}}">
