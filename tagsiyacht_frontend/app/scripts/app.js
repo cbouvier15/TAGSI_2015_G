@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ui.router',
-    'ui.materialize'
+    'ui.materialize',
+    'http-auth-interceptor'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
@@ -25,6 +26,30 @@ angular
     $urlRouterProvider.otherwise('/yachts');
 
     $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: function($scope, $state, Login, authService) {
+          $scope.user = {
+            'username': '',
+            'password': ''
+          }
+          $scope.submit = function() {
+            console.log("MainCtrl - login submit", $scope.user);
+            $scope.error = undefined;
+            Login.login($scope.user).then( 
+              function(response){
+                console.log(response);
+                authService.loginConfirmed();
+                $state.go('main.yachts');
+              }, 
+              function(response) {
+                console.log(response);
+                $scope.error = response;
+              });
+          }
+        }
+      })
       .state('main', {
         abstract: true,
         templateUrl: 'views/main.html',
@@ -56,4 +81,20 @@ angular
         controller: 'ProfileCtrl'
       });
 
-  });
+  })
+  .run(function ($rootScope){
+    $rootScope.authenticated = true;
+    $rootScope.$on('event:auth-forbidden', function() {
+      console.log("FORBIDEN!");
+      $rootScope.authenticated = false;
+      window.location.href = '/#/login';
+    });
+    $rootScope.$on('event:auth-loginRequired', function() {
+      console.log("LOGIN REQUIRED!");
+      $rootScope.authenticated = false;
+    });
+    $rootScope.$on('event:auth-loginConfirmed', function() {
+      console.log("LOGIN CONFIRMED!");
+      $rootScope.authenticated = true;
+    });
+  });;

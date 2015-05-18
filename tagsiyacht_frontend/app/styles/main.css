@@ -22,3 +22,6 @@ nav ul a {
 	padding-left: 25px;
 }
 
+.pointer {
+  cursor: pointer;
+}
