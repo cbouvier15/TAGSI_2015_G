@@ -8,10 +8,19 @@
  * Controller of the tagsiyachtFrontendApp
  */
 angular.module('app')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, Login, $rootScope, $state) {
+
+    $scope.logout = function() {
+      console.log('Logout');
+      Login.logout().then(
+        function(response) {
+          $rootScope.authenticated = false;
+          console.log(response);
+          $state.go('login');
+        },
+        function(response) {
+          console.log(response);
+        });
+    }
+
   });

@@ -1,5 +1,6 @@
 nav {
 	background-color: #303F9F;
+	padding-left: 25px;
 }
 
 .subtitle {
@@ -15,4 +16,12 @@ footer.page-footer {
 
 nav ul a {
   color: #FFC107;
+}
+
+.yatchs {
+	padding-left: 25px;
+}
+
+.pointer {
+  cursor: pointer;
 }
