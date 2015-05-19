@@ -50,10 +50,18 @@ angular
         },
         controller: 'YachtCtrl'
       })
+      .state('main.signup', {
+        url: '/user/signup',
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl'
+      })
       .state('main.profile', {
         url: '/profile',
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
       });
 
-  });
+  }).config(['$resourceProvider', function($resourceProvider) {
+    // Don't strip trailing slashes from calculated URLs
+    $resourceProvider.defaults.stripTrailingSlashes = false;
+}]);

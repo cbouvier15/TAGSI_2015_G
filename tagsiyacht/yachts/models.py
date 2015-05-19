@@ -6,6 +6,9 @@ class Client(models.Model):
     """
     user = models.ForeignKey('auth.User', related_name="client")
 
+    def __str__(self):
+        return self.user.username
+
 
 class Yacht(models.Model):
     """
@@ -28,3 +31,6 @@ class Sale(models.Model):
     yacht = models.ForeignKey('Yacht', related_name="sale_info")
     sale_price = models.IntegerField(default=0)
     client = models.ForeignKey('Client', related_name="transactions")
+
+    def __str__(self):
+        return self.client.username + '-' + self.yacht.model 
