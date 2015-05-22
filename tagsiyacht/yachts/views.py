@@ -35,9 +35,31 @@ def login_view(request):
         # Return an 'invalid login' error message.
         return HttpResponse('"Wrong credentials"', status=403)
 
+
 def logout_view(request):
     logout(request)
     return HttpResponse('"Logout succeeded"')
+
+
+def signup_view(request):
+    data = json.loads(request.body.decode("utf-8"))
+    user =  User()
+    user.first_name = data['first_name']
+    user.username = data['username']
+    user.last_name = data['last_name']
+    user.email = data['email']
+    user.set_password(data['password'])
+    try:
+        user.save()
+    except Exception as e:
+        print(e)
+    try:
+        client = Client.objects.create(user=user)
+    except Exception as e:
+        print(e)
+
+    return HttpResponse(status=status.HTTP_201_CREATED)
+
 
 class YachtList(generics.ListCreateAPIView):    
     authentication_classes = (SessionAuthentication,)
@@ -55,31 +77,13 @@ class YachtDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class ClientList(generics.ListCreateAPIView):
     authentication_classes = (SessionAuthentication,)
-    permission_classes = (IsAuthenticated,)    
+    permission_classes = (IsAuthenticated,)
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
 
-    def create(self, request, *args, **kwargs):
-        data = request.DATA
-        user =  User()
-        user.first_name = data['first_name']
-        user.username = data['username']
-        user.last_name = data['last_name']
-        user.email = data['email']
-        user.set_password(data['password'])
-        try:
-            user.save()
-        except Exception as e:
-            print(e)
-        try:
-            client = Client.objects.create(user=user)
-        except Exception as e:
-            print(e)
-
-        return HttpResponse(status=status.HTTP_201_CREATED)
 
 class ClientDetail(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = (SessionAuthentication,)
-    permission_classes = (IsAuthenticated,)    
+    permission_classes = (IsAuthenticated,)
     queryset = Client.objects.all()
     serializer_class = YachtSerializer

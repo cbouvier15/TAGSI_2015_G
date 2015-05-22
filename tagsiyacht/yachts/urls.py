@@ -8,6 +8,7 @@ from yachts import views
 urlpatterns = [
     url(r'^rest/login/$', views.login_view),
     url(r'^rest/logout/$', views.logout_view),
+    url(r'^rest/signup/$', views.signup_view),
 
     url(r'^rest/yachts/$', ensure_csrf_cookie(views.YachtList.as_view())),
     url(r'^rest/yachts/(?P<pk>[0-9]+)/$', views.YachtDetail.as_view()),

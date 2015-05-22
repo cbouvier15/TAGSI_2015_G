@@ -34,6 +34,19 @@ angular.module('app')
             console.log("Error");
             deferred.reject(data);
           });
+        return deferred.promise;
+      },
+      signup: function(user) {
+        var deferred = $q.defer()
+        $http.post('/rest/signup/', user).
+          success(function(data, status, headers, config) {
+            console.log("Succeed");
+            deferred.resolve(data);
+          }).
+          error(function(data, status, headers, config) {
+            console.log("Error");
+            deferred.reject(data);
+          });
         return deferred.promise
       }
     }

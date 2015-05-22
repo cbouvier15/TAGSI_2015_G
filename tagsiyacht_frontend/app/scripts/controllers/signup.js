@@ -8,16 +8,15 @@
  * Controller of the app
  */
 angular.module('app')
-  .controller('SignupCtrl', function ($state, $scope, User) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
+  .controller('SignupCtrl', function ($state, $scope, Login) {
     $scope.signup = function(){
-    	$scope.newUser = new User($scope.user);
-    	var returned_user = $scope.newUser.$save();
-		$state.go("main.yachts");
+    	Login.signup($scope.user)
+        .then(function(response){
+          console.log("Signed up succesfully!", response);
+          Login.login($scope.user)
+            .then(function(){
+              $state.go("main.yachts");    
+            });          
+        });
     };
   });
