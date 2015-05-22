@@ -9,5 +9,9 @@
  */
 angular.module('app')
   .factory('Yacht', function ($resource) {
-    return $resource('/rest/yachts');
+    return $resource('/rest/yachts/:id/', {id: '@id'}, {
+        'update': {
+            method: 'PUT'
+        }
+    });
   });

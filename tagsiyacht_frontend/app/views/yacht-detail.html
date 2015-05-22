@@ -6,14 +6,14 @@
         <span class="card-title">{{yachts[params.id].model}} {{yachts[params.id].price | currency}}</span>
       </div>
       <div class="card-content">
+        <p ng-show="yachts[params.id].sold"><b style="color:red; font-size: 100px;">SOLD!</b></p>
         <p><strong>Model: </strong>{{yachts[params.id].model}}</p>
         <p><strong>Description: </strong>{{yachts[params.id].description}}</p>
         <p><strong>Price: </strong>{{yachts[params.id].price | currency}}</p>
       </div>
-      <div class="card-action">
-        <a><i class="mdi-communication-call medium"></i>Contacto</a>
-        <a><i class="mdi-communication-vpn-key medium"></i>Alquilar</a>
-        <a><i class="mdi-editor-attach-money medium"></i>Comprar</a>
+      <div class="card-action" ng-hide="yachts[params.id].sold">
+        <a class="pointer"><i class="mdi-communication-call medium"></i>Contacto</a>
+        <a class="pointer"  ng-click="buyYacht(yachts[params.id])"><i class="mdi-editor-attach-money medium"></i>Comprar</a>
       </div>
     </div>
   </div>

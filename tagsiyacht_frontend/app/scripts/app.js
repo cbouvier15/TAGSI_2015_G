@@ -16,7 +16,8 @@ angular
     'ngSanitize',
     'ui.router',
     'ui.materialize',
-    'http-auth-interceptor'
+    'http-auth-interceptor',
+    'oitozero.ngSweetAlert'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 

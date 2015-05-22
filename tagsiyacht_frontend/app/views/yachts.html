@@ -3,14 +3,16 @@
       <div class="card">
         <div class="card-image">
           <img src="{{yacht.photo}}">
-          <span class="card-title">{{yacht.model}} {{yacht.price | currency}}</span>
+          <span class="card-title" ng-hide="yacht.sold">{{yacht.model}} {{yacht.price | currency}}</span>
+          <span class="card-title" ng-show="yacht.sold"><b style="color:red; font-size: 100px;">SOLD!</b></span>
         </div>
-        <div class="card-content">
+        <div class="card-content" style="height:100px;">
           <p>{{yacht.description}}</p>
         </div>
         <div class="card-action">
           <a href="#/detail/{{$index}}"><i class="mdi-content-add"></i>Info</a>
         </div>
+
       </div>
     </div>
 </div>

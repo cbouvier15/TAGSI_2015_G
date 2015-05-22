@@ -61,14 +61,21 @@ def signup_view(request):
     return HttpResponse(status=status.HTTP_201_CREATED)
 
 
+def buy_yacht_view(request, pk):
+    yacht = Yacht.objects.get(id=pk)
+    yacht.sold = True
+    yacht.save()
+    return HttpResponse(status=status.HTTP_201_CREATED)
+
+
 class YachtList(generics.ListCreateAPIView):    
     authentication_classes = (SessionAuthentication,)
     permission_classes = (IsAuthenticated,)
-    queryset = Yacht.objects.all()
+    queryset = Yacht.objects.all().order_by("model")
     serializer_class = YachtSerializer
 
 
-class YachtDetail(generics.RetrieveUpdateDestroyAPIView):
+class YachtDetail(generics.RetrieveAPIView):
     authentication_classes = (SessionAuthentication,)
     permission_classes = (IsAuthenticated,)
     queryset = Yacht.objects.all()
